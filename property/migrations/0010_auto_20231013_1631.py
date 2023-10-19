@@ -11,8 +11,6 @@ def purify_phones(apps, schema_editor):
         pure_number = phonenumbers.parse(flat.owners_phonenumber, "RU")
         if phonenumbers.is_valid_number(pure_number):
             flat.owners_pure_phone = pure_number
-        else:
-            flat.owners_pure_phone = ""
 
         flat.save()
 
