@@ -7,7 +7,7 @@ def fill_owners_with_flats(apps, schema_editor):
     Flat = apps.get_model("property", "Flat")
     Owner = apps.get_model("property", "Owner")
 
-    for owner in Owner.objects.all():
+    for owner in Owner.objects.all().iterator():
         flats = Flat.objects.filter(owner=owner.name, owners_phonenumber=owner.owners_phonenumber)
         owner.owned_flats.set(flats)
 
