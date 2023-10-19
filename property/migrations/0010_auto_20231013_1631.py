@@ -7,7 +7,7 @@ import phonenumbers
 def purify_phones(apps, schema_editor):
     Flat = apps.get_model("property", "Flat")
 
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
         pure_number = phonenumbers.parse(flat.owners_phonenumber, "RU")
         if phonenumbers.is_valid_number(pure_number):
             flat.owners_pure_phone = pure_number
